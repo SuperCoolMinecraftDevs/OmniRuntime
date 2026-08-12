@@ -73,6 +73,7 @@ cares about the module's exports. It simply will not have an SDK written for it.
 
 ## Documentation
 
+- [Architecture](docs/architecture.md)
 - [Decision log](docs/adr)
 - [Contributing](CONTRIBUTING.md)
 - [Changelog](CHANGELOG.md)

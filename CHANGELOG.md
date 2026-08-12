@@ -15,6 +15,10 @@ Version numbers follow the scheme described in
   decisions get recorded.
 - Decision log in ADR format.
 - Code owners, so review requests reach the right people automatically.
+- Architecture document describing the core, the platform adapter layer, the
+  module lifecycle and the limits we can and cannot enforce.
+- Decision records covering the build tool, the WebAssembly runtime and the way
+  server platforms are supported.
 
 ### Changed
 

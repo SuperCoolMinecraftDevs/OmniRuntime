@@ -6,11 +6,14 @@ situation that forced it, and what it cost us.
 Records are immutable. When a decision changes we add a new record and mark the
 old one superseded, so the reasoning stays readable even after the conclusion
 stops being true. Read them as history rather than as documentation: for how
-the system works today, see the architecture document.
+the system works today, see [architecture.md](../architecture.md).
 
 | Number | Title | Status |
 | --- | --- | --- |
 | [0001](0001-record-architecture-decisions.md) | Record architecture decisions | Accepted |
+| [0002](0002-build-with-maven.md) | Build with Maven | Accepted |
+| [0003](0003-embed-chicory-as-the-webassembly-runtime.md) | Embed Chicory as the WebAssembly runtime | Accepted |
+| [0004](0004-support-server-platforms-through-adapters.md) | Support server platforms through adapters | Accepted |
 
 ## Adding a record
 
