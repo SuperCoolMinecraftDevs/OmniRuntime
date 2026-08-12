@@ -135,11 +135,46 @@ from the language the module was written in.
 
 Everything is denied by default. A module reaches the filesystem, the network or
 any part of the server API only where the server owner has granted it, per
-module, by name, in configuration.
+module, by name, in configuration. The grant model is
+[record 0005](adr/0005-capabilities-are-granted-by-the-server-owner.md).
+
+A module declares its requests in its manifest, scoped and marked required or
+optional. Until they are answered it sits pending and does not run. A missing
+required capability stops the module loading; a missing optional one does not,
+and the host reports the granted set to the guest so it can degrade instead of
+failing.
 
 That means WASI is not switched on wholesale. Where we implement WASI calls, we
 implement them against the grants, so a module that was given one directory gets
 one directory and a module that was given nothing gets an error it can handle.
+
+## Layout on disk
+
+```
+server/
+  modules/
+    myplugin.omni
+    myplugin/
+      config.yml
+  plugins/
+    OmniRuntime/
+      config.yml
+      grants.yml
+```
+
+The folder beside a module is its data directory and the root of its filesystem
+sandbox, so where its files live and what it can reach are one answer. Host
+owned files, including the grants, sit outside `modules/` where no module can
+write to them. Configuration is YAML, parsed by the adapter using the parser the
+server already ships rather than by the core. The details are in
+[record 0006](adr/0006-module-layout-and-configuration.md).
+
+## Module identity
+
+A module is identified by a namespaced name, lowercase, in the form
+`namespace.name`. It is the directory name, the key in the grants file, and the
+name anything installing a module by name would use. It is fixed for the life of
+the module, because changing it orphans both the data directory and the grants.
 
 ## Resource limits
 
@@ -173,3 +208,10 @@ In order, and without dates attached:
 - Whether modules can call each other, and if so through what.
 - What happens to a module that traps during teardown.
 - Whether state survives a reload, and if so, who owns the format.
+- Whether modules are ever managed from outside the server console. A web
+  dashboard, and installing by name from a registry, are both plausible and
+  neither is decided. What they need from us is already true: a manifest that
+  can be read without executing the module, and a stable module identity. If
+  either is ever built, the security question it raises is not the interface
+  but the authenticated channel behind it, which is a larger surface than the
+  runtime itself.
