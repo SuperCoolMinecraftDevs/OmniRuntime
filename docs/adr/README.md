@@ -11,6 +11,7 @@ the system works today, see the architecture document.
 | Number | Title | Status |
 | --- | --- | --- |
 | [0001](0001-record-architecture-decisions.md) | Record architecture decisions | Accepted |
+| [0002](0002-build-with-maven.md) | Build with Maven | Accepted |
 
 ## Adding a record
 
