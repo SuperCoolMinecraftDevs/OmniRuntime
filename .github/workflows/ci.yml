@@ -1,0 +1,12 @@
+name: CI Pipeline
+on:
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests
+        run: echo "Replace this with your build/test command"
