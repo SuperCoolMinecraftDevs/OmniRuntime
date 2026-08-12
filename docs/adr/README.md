@@ -6,7 +6,7 @@ situation that forced it, and what it cost us.
 Records are immutable. When a decision changes we add a new record and mark the
 old one superseded, so the reasoning stays readable even after the conclusion
 stops being true. Read them as history rather than as documentation: for how
-the system works today, see the architecture document.
+the system works today, see [architecture.md](../architecture.md).
 
 | Number | Title | Status |
 | --- | --- | --- |
