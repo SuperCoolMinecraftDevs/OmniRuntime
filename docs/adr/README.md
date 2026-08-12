@@ -14,6 +14,8 @@ the system works today, see [architecture.md](../architecture.md).
 | [0002](0002-build-with-maven.md) | Build with Maven | Accepted |
 | [0003](0003-embed-chicory-as-the-webassembly-runtime.md) | Embed Chicory as the WebAssembly runtime | Accepted |
 | [0004](0004-support-server-platforms-through-adapters.md) | Support server platforms through adapters | Accepted |
+| [0005](0005-capabilities-are-granted-by-the-server-owner.md) | Capabilities are granted by the server owner | Accepted |
+| [0006](0006-module-layout-and-configuration.md) | Module layout and configuration | Accepted |
 
 ## Adding a record
 
