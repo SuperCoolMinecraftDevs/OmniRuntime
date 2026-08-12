@@ -1,0 +1,12 @@
+# Who gets pulled into a review, and why.
+#
+# The last matching rule wins, so the specific rules live at the bottom.
+# Everyone listed here needs write access, or GitHub ignores the line.
+
+*                       @Elchi-dev @HyScript7
+
+# The decision log is the project's memory. Both of us read changes to it.
+/docs/adr/              @Elchi-dev @HyScript7
+
+# Break the pipeline and nobody can merge anything, so this stays watched.
+/.github/               @Elchi-dev @HyScript7
