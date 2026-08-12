@@ -24,6 +24,8 @@ Version numbers follow the scheme described in
   approval rather than inheriting it.
 - Layout on disk. Modules live in `modules/`, the folder beside a module is both
   its data directory and its filesystem sandbox, and configuration is YAML.
+  Removing a module archives its data instead of deleting it, and reinstalling
+  the same module offers the archive back.
 
 ### Changed
 

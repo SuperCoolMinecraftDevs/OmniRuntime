@@ -80,6 +80,17 @@ that ordinary tooling can read.
 What a module writes inside its own directory beyond that is its own business.
 The host does not care about the format of a module's data.
 
+Removing a module archives its state rather than deleting it. The data directory
+is moved into a host owned archive, keyed by module identity and timestamped, and
+the grants that applied to it are recorded alongside. If a module with the same
+identity is installed again, the host offers to restore the archived data.
+
+Grants are not restored with it. The data comes back, the permissions are asked
+for again, showing what was previously approved so the answer is one keystroke
+rather than research. Restoring authority automatically because a file was once
+in that folder would undo the point of record 0005, and removing and reinstalling
+a module is exactly the sequence an attacker would use to get it back.
+
 ## Consequences
 
 A server owner learns one layout: a module, a folder next to it, and that folder
@@ -106,7 +117,16 @@ deliberate. It is the piece that a management interface or an install-by-name
 flow would need, and adding it later would mean rewriting grants and moving data
 directories on servers that are already running.
 
-Data directories accumulate. A module removed from `modules/` leaves its folder
-and its grants behind, which is what you want the first time somebody deletes a
-file by accident and what you do not want after a year of experimenting.
-Cleaning that up needs a deliberate command rather than automatic deletion.
+Archiving on removal means nothing is destroyed by deleting a file, which is the
+failure people actually have. Someone who removes a module to test something
+gets their configuration back when they put it back.
+
+It also means disk usage grows quietly, so the archive needs to be inspectable
+and prunable by command, and it needs to say how much space it is using when
+asked. An archive nobody can see is a leak with better manners.
+
+Restoring data but not authority will read as friction to somebody reinstalling
+a module they removed an hour ago. Showing the previously approved grants at the
+moment we ask is what keeps that to one keystroke, and it is worth the friction:
+remove and reinstall is otherwise a way to launder a permission the owner
+revoked.
