@@ -12,6 +12,7 @@ the system works today, see the architecture document.
 | --- | --- | --- |
 | [0001](0001-record-architecture-decisions.md) | Record architecture decisions | Accepted |
 | [0002](0002-build-with-maven.md) | Build with Maven | Accepted |
+| [0003](0003-embed-chicory-as-the-webassembly-runtime.md) | Embed Chicory as the WebAssembly runtime | Accepted |
 
 ## Adding a record
 
