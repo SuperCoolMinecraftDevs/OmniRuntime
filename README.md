@@ -71,6 +71,16 @@ rather than forking the project.
 Anything else that compiles to WebAssembly will load, because the host only
 cares about the module's exports. It simply will not have an SDK written for it.
 
+## Building
+
+Needs JDK 25 and Maven 3.9 or newer. JDK 25 is what the current Paper API is
+compiled for; the core is still emitted as Java 17 bytecode so it stays usable
+on older Minecraft lines.
+
+```
+mvn verify
+```
+
 ## Documentation
 
 - [Architecture](docs/architecture.md)
