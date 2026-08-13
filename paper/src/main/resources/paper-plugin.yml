@@ -1,0 +1,9 @@
+name: OmniRuntime
+version: '${project.version}'
+main: io.github.supercoolminecraftdevs.omniruntime.paper.OmniRuntimePlugin
+api-version: '1.21'
+description: A WebAssembly host for Minecraft servers
+website: https://github.com/SuperCoolMinecraftDevs/OmniRuntime
+authors:
+  - Elchi
+  - HyScript7

@@ -27,7 +27,16 @@ Version numbers follow the scheme described in
   Removing a module archives its data instead of deleting it, and reinstalling
   the same module offers the archive back.
 
+- Maven build with two modules: `omniruntime-core`, which has no server API on
+  its classpath, and `omniruntime-paper`, which implements the bridge against
+  Paper. A build rule fails the build if a server API ever reaches the core.
+- Module identity parsing, with error messages that say what is wrong with a
+  name rather than that it is invalid.
+- The `ServerBridge` interface, and a Paper implementation of it behind a plugin
+  entry point that reports the platform it found and where modules will live.
+
 ### Changed
 
 - README now explains what the project is, what it is not yet, and which guest
   languages are planned.
+- CI builds and tests the project instead of running a placeholder command.
