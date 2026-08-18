@@ -179,6 +179,25 @@ write to them. Configuration is YAML, parsed by the adapter using the parser the
 server already ships rather than by the core. The details are in
 [record 0006](adr/0006-module-layout-and-configuration.md).
 
+## The manifest
+
+A module says what it is in a manifest carried inside the wasm file, in a custom
+section. It is read without executing anything, because deciding whether to
+grant a capability by running the code that wants it is not a decision.
+
+```
+identity: elchi.greeter
+version: 2.1.0
+abi: 1
+requires: fs:read modules/elchi.greeter
+optional: net:https api.example.com
+```
+
+The format and the reasoning behind it are in
+[record 0009](adr/0009-manifest-format.md). It is not authenticated: anyone
+holding the file can change any line of it, including the identity that grants
+are keyed on. Closing that gap is an open question below.
+
 ## Module identity
 
 A module is identified by a namespaced name, lowercase, in the form
@@ -218,6 +237,11 @@ In order, and without dates attached:
 - Whether modules can call each other, and if so through what.
 - What happens to a module that traps during teardown.
 - Whether state survives a reload, and if so, who owns the format.
+- How a module proves it is what its manifest claims. Grants are keyed on
+  identity, so a module claiming an identity a server already approved would
+  inherit those grants. Signing, or recording a fingerprint of the module a
+  grant was approved for, are the obvious candidates. This has to be answered
+  before anyone installs a module they did not build themselves.
 - Whether modules are ever managed from outside the server console. A web
   dashboard, and installing by name from a registry, are both plausible and
   neither is decided. What they need from us is already true: a manifest that
