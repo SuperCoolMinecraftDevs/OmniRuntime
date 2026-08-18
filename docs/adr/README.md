@@ -17,6 +17,7 @@ the system works today, see [architecture.md](../architecture.md).
 | [0005](0005-capabilities-are-granted-by-the-server-owner.md) | Capabilities are granted by the server owner | Accepted |
 | [0006](0006-module-layout-and-configuration.md) | Module layout and configuration | Accepted |
 | [0007](0007-guest-abi-targets-core-modules.md) | The guest ABI targets core modules, not components | Accepted |
+| [0008](0008-guest-interfaces-use-wit-and-the-canonical-abi.md) | Guest interfaces are described in WIT and use the canonical ABI | Accepted |
 
 ## Adding a record
 
