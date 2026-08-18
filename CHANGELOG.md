@@ -61,6 +61,8 @@ Version numbers follow the scheme described in
   and a stopped module cannot register anything new.
 - The Paper plugin now loads and starts modules on enable, and stops them on
   disable rather than leaving them running.
+- The plugin jar now contains the core and the WebAssembly runtime, so it runs
+  on a server without anything else being installed.
 
 ### Changed
 
