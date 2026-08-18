@@ -81,6 +81,11 @@ on older Minecraft lines.
 mvn verify
 ```
 
+The plugin jar is `paper/target/OmniRuntime-<version>.jar`. It carries the core
+and the WebAssembly runtime inside it, so there is nothing else to install.
+
+Verified against Paper 26.2 build 112 on Java 25.
+
 ## Documentation
 
 - [Architecture](docs/architecture.md)

@@ -51,6 +51,18 @@ Version numbers follow the scheme described in
   the host reads it without running the module.
 - Manifest problems are reported with the line number and what was expected,
   and an unknown key is an error rather than being ignored.
+- Module loading. Files ending in `.omni` in the modules directory are read,
+  checked against their manifest and instantiated at startup. A module that
+  cannot be loaded is reported and skipped, and the rest still load.
+- Module lifecycle, with start, stop and discard. Reloading is a discard
+  followed by loading the file again, so no running module is ever mutated.
+- A ledger of everything a module has been given, so stopping it takes all of it
+  back. One registration failing to be taken back does not prevent the others,
+  and a stopped module cannot register anything new.
+- The Paper plugin now loads and starts modules on enable, and stops them on
+  disable rather than leaving them running.
+- The plugin jar now contains the core and the WebAssembly runtime, so it runs
+  on a server without anything else being installed.
 
 ### Changed
 
