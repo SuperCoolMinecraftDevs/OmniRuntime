@@ -46,6 +46,11 @@ Version numbers follow the scheme described in
   about either is stopped rather than accommodated.
 - A Rust guest module used as a test fixture, built by cargo, so the host is
   tested against something a real toolchain produced.
+- Module manifests. A module declares its identity, version, ABI version and the
+  capabilities it wants in a small text format carried inside the wasm file, and
+  the host reads it without running the module.
+- Manifest problems are reported with the line number and what was expected,
+  and an unknown key is an error rather than being ignored.
 
 ### Changed
 

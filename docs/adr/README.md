@@ -18,6 +18,7 @@ the system works today, see [architecture.md](../architecture.md).
 | [0006](0006-module-layout-and-configuration.md) | Module layout and configuration | Accepted |
 | [0007](0007-guest-abi-targets-core-modules.md) | The guest ABI targets core modules, not components | Accepted |
 | [0008](0008-guest-interfaces-use-wit-and-the-canonical-abi.md) | Guest interfaces are described in WIT and use the canonical ABI | Accepted |
+| [0009](0009-manifest-format.md) | The manifest is a small text format carried inside the module | Accepted |
 
 ## Adding a record
 
