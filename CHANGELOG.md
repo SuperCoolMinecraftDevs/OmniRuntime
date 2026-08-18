@@ -36,6 +36,16 @@ Version numbers follow the scheme described in
   entry point that reports the platform it found and where modules will live.
 - Decision record on what the guest ABI targets. Guests are core modules, not
   components, because the runtime cannot load components at all.
+- Guest interfaces are described in WIT and use the canonical ABI, so bindings
+  are generated for each guest language rather than written by hand.
+- Host side of that ABI: passing strings and byte lists into a module and
+  reading them back, with the guest's own allocator and the release call that
+  goes with it.
+- Offsets and lengths coming from a module are checked against its memory before
+  the host reads anything, and text is decoded strictly. A module that lies
+  about either is stopped rather than accommodated.
+- A Rust guest module used as a test fixture, built by cargo, so the host is
+  tested against something a real toolchain produced.
 
 ### Changed
 

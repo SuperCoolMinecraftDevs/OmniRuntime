@@ -20,5 +20,13 @@ jobs:
           java-version: '25'
           cache: maven
 
+      - name: Add the wasm target
+        run: rustup target add wasm32-unknown-unknown
+
+      - name: Rebuild the guest test fixture
+        run: |
+          cargo build --release --target wasm32-unknown-unknown --manifest-path guests/greeter/Cargo.toml
+          cp guests/greeter/target/wasm32-unknown-unknown/release/greeter.wasm core/src/test/resources/greeter.wasm
+
       - name: Build and test
         run: mvn -B --no-transfer-progress verify
