@@ -97,6 +97,12 @@ This is the hard part of the project. The sandbox gives us memory isolation for
 free, but nothing about WebAssembly cleans up a scheduled task we registered on
 the module's behalf.
 
+Modules are files ending in `.omni` in the modules directory, and a file's name
+has to match the identity in its manifest. Grants and data directories are keyed
+on identity, so a file saying one thing and a manifest saying another is stopped
+rather than guessed at. One module failing to load does not stop the others: a
+server owner with ten modules should not lose all of them to one bad file.
+
 ## The guest ABI
 
 Not designed yet, and it is the decision most worth taking slowly, because it is
