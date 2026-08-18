@@ -102,11 +102,15 @@ the module's behalf.
 Not designed yet, and it is the decision most worth taking slowly, because it is
 the one we cannot revise without breaking every plugin written against it.
 
-Guests are core modules rather than components. The runtime we embed rejects
-component binaries at the header, so the component model is not available to us
-and the ABI is ours to define. Whether it follows the canonical ABI or a design
-of our own is still open, and the reasoning is in
-[record 0007](adr/0007-guest-abi-targets-core-modules.md).
+Guests are core modules rather than components, because the runtime we embed
+rejects component binaries at the header
+([record 0007](adr/0007-guest-abi-targets-core-modules.md)). Interfaces are
+described in WIT and use the canonical ABI that WIT toolchains already emit, so
+guest bindings are generated rather than written by hand
+([record 0008](adr/0008-guest-interfaces-use-wit-and-the-canonical-abi.md)).
+
+The supported subset is numbers, strings and lists of bytes. Richer types are
+encoded into byte lists until there is a reason to widen it.
 
 The constraints are already fixed by WebAssembly itself:
 
