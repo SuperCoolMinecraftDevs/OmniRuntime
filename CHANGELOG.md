@@ -34,6 +34,8 @@ Version numbers follow the scheme described in
   name rather than that it is invalid.
 - The `ServerBridge` interface, and a Paper implementation of it behind a plugin
   entry point that reports the platform it found and where modules will live.
+- Decision record on what the guest ABI targets. Guests are core modules, not
+  components, because the runtime cannot load components at all.
 
 ### Changed
 

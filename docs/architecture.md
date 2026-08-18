@@ -102,6 +102,12 @@ the module's behalf.
 Not designed yet, and it is the decision most worth taking slowly, because it is
 the one we cannot revise without breaking every plugin written against it.
 
+Guests are core modules rather than components. The runtime we embed rejects
+component binaries at the header, so the component model is not available to us
+and the ABI is ours to define. Whether it follows the canonical ABI or a design
+of our own is still open, and the reasoning is in
+[record 0007](adr/0007-guest-abi-targets-core-modules.md).
+
 The constraints are already fixed by WebAssembly itself:
 
 - Only numbers cross the boundary. Anything larger travels as an offset and a
